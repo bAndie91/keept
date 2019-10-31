@@ -429,7 +429,7 @@ static int attached(int s)
 		if ((*(uint32_t*)buf) == (uint32_t)CEXIT) {
 		    // len check tba (highly unlikely != 6)
 		    int rv = buf[5];
-		    exitmsg_to_fd(1, buf[4], buf[5]);
+		    exitmsg_to_fd(2, buf[4], buf[5]);
 		    return rv;
 		}
 		if ((*(uint32_t*)buf) == (uint32_t)WINSIZ) {
