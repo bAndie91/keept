@@ -347,7 +347,7 @@ static void exitmsg_to_fd(int fd, bool normal_exit, uint8_t status)
     const char * s = normal_exit? "keept: exit": "terminated by signal";
     int l = snprintf((char *)buf, sizeof buf,
 		     // XXX fd value depencency/cohesion...
-		     fd == 2? "\n[%s %u]\n": "\r\n[%s %u]\r\n", s, status);
+		     isatty(fd)? "\r\n[%s %u]\r\n": "\n[%s %u]\n", s, status);
     write(fd, buf, l);
 }
 
